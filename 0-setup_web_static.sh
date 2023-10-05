@@ -11,7 +11,7 @@ sudo mkdir -p /data/web_static/shared/
 sudo mkdir -p /data/web_static/releases/test/
 
 # Create Html File inside the test folder
-sudo echo "<html>
+echo "<html>
   <head>
   </head>
   <body>
