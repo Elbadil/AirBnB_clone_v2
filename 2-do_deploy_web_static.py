@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 """Defining a function do_deploy"""
 from fabric.api import run, put, local, env
 from datetime import datetime as date
