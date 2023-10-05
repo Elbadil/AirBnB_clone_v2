@@ -1,13 +1,12 @@
 #!/usr/bin/python3
 """Defining a function do_deploy"""
-from fabric.api import run, put, local, env
+from fabric.api import *
 from datetime import datetime as date
 import os
 
 
 # Declaring my servers
 env.hosts = ['54.89.182.156', '34.239.248.185']
-env.user = "ubuntu"
 
 
 def do_pack():
@@ -44,7 +43,7 @@ def do_deploy(archive_path):
 
         # Uploading the archive to the tmp directory of the web server
         a_path = "/tmp/{}".format(archive_filename)
-        put(local_path=archive_path, remote=a_path)
+        put(archive_path, a_path)
 
         # Defining the target folder for the archive file
         target_folder = "/data/web_static/releases/"
