@@ -33,9 +33,6 @@ def do_pack():
 
 def do_deploy(archive_path):
     """distributes an archive to the web servers"""
-    # Declaring my servers
-    env.hosts = ['378424-web-01', '378424-web-02']
-
     # In case the file at the path archive_path doesn't exist
     if not os.path.exists(archive_path):
         return False
