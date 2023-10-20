@@ -5,6 +5,7 @@ from models.base_model import BaseModel, Base
 from sqlalchemy.orm import relationship
 from models.city import City
 import models
+from os import getenv
 
 
 class State(BaseModel, Base):
@@ -17,10 +18,11 @@ class State(BaseModel, Base):
     cities_states = relationship('City', backref='state',
                                  cascade='all, delete, delete-orphan')
 
-    @property
-    def cities(self):
-        """returns the list of City instances with state_id equals
-        to the current State.id
-        """
-        return [city for city in models.storage.all(City).values()
-                if city.state_id == self.id]
+    if getenv('HBNB_TYPE_STORAGE') != 'db':
+        @property
+        def cities(self):
+            """returns the list of City instances with state_id equals
+            to the current State.id
+            """
+            return [city for city in models.storage.all(City).values()
+                    if city.state_id == self.id]

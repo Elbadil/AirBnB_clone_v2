@@ -8,6 +8,7 @@ from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.review import Review
+import models
 
 
 class FileStorage:
@@ -69,3 +70,7 @@ class FileStorage:
         if obj:
             obj_key = f"{obj.__class__.__name__}.{obj.id}"
             del self.__objects[obj_key]
+    
+    def close(self):
+        """calls reload() method for deserializing the JSON file to objects"""
+        self.reload()
