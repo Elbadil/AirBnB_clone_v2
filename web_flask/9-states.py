@@ -28,7 +28,7 @@ def states_id(id):
     for state in all_states.values():
         if (state.id == id):
             return render_template('9-states.html', id=id, states=state, rte=2)
-    return render_template('9-states.html', route=2)
+    return render_template('9-states.html', rte=2)
 
 
 @app.teardown_appcontext
